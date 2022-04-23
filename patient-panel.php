@@ -24,6 +24,7 @@ if(isset($_POST['app-submit']))
   $email=$_SESSION['email'];
   $appdate=$_POST['appdate'];
   $apptime=$_POST['apptime'];
+  $ctest=$_POST['ctest'];
   $cur_date = date("Y-m-d");
   date_default_timezone_set('Asia/Kolkata');
   $cur_time = date("H:i:s");
@@ -35,7 +36,7 @@ if(isset($_POST['app-submit']))
       $check_query = mysqli_query($con,"select apptime from appointmenttb where doctor='$doctor' and appdate='$appdate' and apptime='$apptime'");
 
         if(mysqli_num_rows($check_query)==0){
-          $query=mysqli_query($con,"insert into appointmenttb(pid,fname,lname,gender,email,contact,doctor,appdate,apptime,userStatus,doctorStatus) values($pid,'$fname','$lname','$gender','$email','$contact','$doctor','$appdate','$apptime','1','1')");
+          $query=mysqli_query($con,"insert into appointmenttb(pid,fname,lname,gender,email,contact,doctor,appdate,apptime,userStatus,doctorStatus,ctest) values($pid,'$fname','$lname','$gender','$email','$contact','$doctor','$appdate','$apptime','1','1','$ctest')");
 
           if($query)
           {
@@ -287,7 +288,7 @@ function get_specs(){
 
                   </script>
 
-              
+                  
                   <div class="col-md-4"><label>Appointment Date</label></div>
                   <div class="col-md-8"><input type="date" class="form-control datepicker" name="appdate"></div><br><br>
                   <div class="col-md-4"><label>Appointment Time</label></div>
@@ -303,7 +304,7 @@ function get_specs(){
                     </select>
 
                   </div><br><br>
-
+                  <input type="hidden" id="ctest" name="ctest" value="2"></input>
                   <div class="col-md-4">
                     <input type="submit" name="app-submit" value="Create new entry" class="btn btn-primary" id="inputbtn">
                   </div>
@@ -430,11 +431,11 @@ function get_specs(){
                 document.getElementById('docFees').value = selection;
               };
             </script>
+                  <input type="hidden" id="ctest" name="ctest" value="10">
                   <div class="col-md-4"><label>Appointment Date</label></div>
                   <div class="col-md-8"><input type="date" class="form-control datepicker" name="appdate"></div><br><br>
                   <div class="col-md-4"><label>Appointment Time</label></div>
                   <div class="col-md-8">
-                    <!-- <input type="time" class="form-control" name="apptime"> -->
                     <select name="apptime" class="form-control" id="apptime" required="required">
                       <option value="" disabled selected>Select Time</option>
                       <option value="08:00:00">8:00 AM</option>
