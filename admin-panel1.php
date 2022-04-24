@@ -138,7 +138,7 @@ if(isset($_POST['docsub1']))
       <a class="list-group-item list-group-item-action" href="#list-pres" id="list-pres-list"  role="tab" data-toggle="list" aria-controls="home">Covid Test List</a>
       <a class="list-group-item list-group-item-action" href="#list-settings" id="list-adoc-list"  role="tab" data-toggle="list" aria-controls="home">Add Hospital</a>
       <a class="list-group-item list-group-item-action" href="#list-settings1" id="list-ddoc-list"  role="tab" data-toggle="list" aria-controls="home">Delete Hospital</a>
-      <a class="list-group-item list-group-item-action" href="#list-mes" id="list-mes-list"  role="tab" data-toggle="list" aria-controls="home">Queries</a>
+
       
     </div><br>
   </div>
@@ -372,8 +372,6 @@ if(isset($_POST['docsub1']))
                       <th scope="col">Last Name</th>
                       <th scope="col">Appointment Date</th>
                       <th scope="col">Appointment Time</th>
-                      <th scope="col">Disease</th>
-                      <th scope="col">Allergy</th>
                       <th scope="col">Covid Test Result</th>
                     </tr>
                   </thead>
@@ -391,8 +389,6 @@ if(isset($_POST['docsub1']))
                         $lname = $row['lname'];
                         $appdate = $row['appdate'];
                         $apptime = $row['apptime'];
-                        $disease = $row['disease'];
-                        $allergy = $row['allergy'];
                         $pres = $row['prescription'];
 
                         
@@ -404,8 +400,6 @@ if(isset($_POST['docsub1']))
                           <td>$lname</td>
                           <td>$appdate</td>
                           <td>$apptime</td>
-                          <td>$disease</td>
-                          <td>$allergy</td>
                           <td>$pres</td>
                         </tr>";
                       }
@@ -441,7 +435,6 @@ if(isset($_POST['docsub1']))
                     <th scope="col">Email</th>
                     <th scope="col">Contact</th>
                     <th scope="col">Hospital Name</th>
-                    <th scope="col">Consultancy Fees</th>
                     <th scope="col">Appointment Date</th>
                     <th scope="col">Appointment Time</th>
                     <th scope="col">Appointment Status</th>
@@ -466,7 +459,6 @@ if(isset($_POST['docsub1']))
                         <td><?php echo $row['email'];?></td>
                         <td><?php echo $row['contact'];?></td>
                         <td><?php echo $row['doctor'];?></td>
-                        <td><?php echo $row['docFees'];?></td>
                         <td><?php echo $row['appdate'];?></td>
                         <td><?php echo $row['apptime'];?></td>
                         <td>
@@ -502,10 +494,10 @@ if(isset($_POST['docsub1']))
                   <div class="col-md-8">
                    <select name="special" class="form-control" id="special" required="required">
                       <option value="head" name="spec" disabled selected>Select Covid Vacine</option>
-                      <option value="Covid Vacine 1" name="spec">Covid Vacine 1</option>
-                      <option value="Cardiologist" name="spec">Covid Vacine 2</option>
-                      <option value="Neurologist" name="spec">Covid Vacine 3</option>
-                      <option value="Pediatrician" name="spec">Covid Vacine 4</option>
+                      <option value="Covid Vacine 1" name="spec">Covishield </option>
+                      <option value="Cardiologist" name="spec">Covaxin</option>
+                      <option value="Neurologist" name="spec">Janssen (Johnson & Johnson)</option>
+                      <option value="Pediatrician" name="spec">Sinopharm [Vero Cell]</option>
                     </select>
                     </div><br><br>
                   <div class="col-md-4"><label>Email ID:</label></div>
@@ -538,51 +530,6 @@ if(isset($_POST['docsub1']))
 
        <div class="tab-pane fade" id="list-attend" role="tabpanel" aria-labelledby="list-attend-list">...</div>
 
-       <div class="tab-pane fade" id="list-mes" role="tabpanel" aria-labelledby="list-mes-list">
-
-         <div class="col-md-8">
-      <form class="form-group" action="messearch.php" method="post">
-        <div class="row">
-        <div class="col-md-10"><input type="text" name="mes_contact" placeholder="Enter Contact" class = "form-control"></div>
-        <div class="col-md-2"><input type="submit" name="mes_search_submit" class="btn btn-primary" value="Search"></div></div>
-      </form>
-    </div>
-        
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">User Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Contact</th>
-                    <th scope="col">Message</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php 
-
-                    $con=mysqli_connect("localhost","root","","myhmsdb");
-                    global $con;
-
-                    $query = "select * from contact;";
-                    $result = mysqli_query($con,$query);
-                    while ($row = mysqli_fetch_array($result)){
-              
-                      #$fname = $row['fname'];
-                      #$lname = $row['lname'];
-                      #$email = $row['email'];
-                      #$contact = $row['contact'];
-                  ?>
-                      <tr>
-                        <td><?php echo $row['name'];?></td>
-                        <td><?php echo $row['email'];?></td>
-                        <td><?php echo $row['contact'];?></td>
-                        <td><?php echo $row['message'];?></td>
-                      </tr>
-                    <?php } ?>
-                </tbody>
-              </table>
-        <br>
-      </div>
 
 
     </div>
