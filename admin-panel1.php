@@ -254,11 +254,6 @@ if(isset($_POST['docsub1']))
               
 
               <div class="col-md-8">
-      <form class="form-group" action="doctorsearch.php" method="post">
-        <div class="row">
-        <div class="col-md-10"><input type="text" name="doctor_contact" placeholder="Enter Email ID" class = "form-control"></div>
-        <div class="col-md-2"><input type="submit" name="doctor_search_submit" class="btn btn-primary" value="Search"></div></div>
-      </form>
     </div>
               <table class="table table-hover">
                 <thead>
@@ -267,7 +262,6 @@ if(isset($_POST['docsub1']))
                     <th scope="col">Covid Vacine</th>
                     <th scope="col">Email</th>
                     <th scope="col">Password</th>
-                    <th scope="col">Fees</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -281,14 +275,12 @@ if(isset($_POST['docsub1']))
                       $spec = $row['spec'];
                       $email = $row['email'];
                       $password = $row['password'];
-                      $docFees = $row['docFees'];
                       
                       echo "<tr>
                         <td>$username</td>
                         <td>$spec</td>
                         <td>$email</td>
                         <td>$password</td>
-                        <td>$docFees</td>
                       </tr>";
                     }
 
@@ -302,11 +294,6 @@ if(isset($_POST['docsub1']))
     <div class="tab-pane fade" id="list-pat" role="tabpanel" aria-labelledby="list-pat-list">
 
        <div class="col-md-8">
-      <form class="form-group" action="patientsearch.php" method="post">
-        <div class="row">
-        <div class="col-md-10"><input type="text" name="patient_contact" placeholder="Enter Contact" class = "form-control"></div>
-        <div class="col-md-2"><input type="submit" name="patient_search_submit" class="btn btn-primary" value="Search"></div></div>
-      </form>
     </div>
         
               <table class="table table-hover">
@@ -417,15 +404,10 @@ if(isset($_POST['docsub1']))
 
       <div class="tab-pane fade" id="list-app" role="tabpanel" aria-labelledby="list-pat-list">
          <div class="col-md-8">
-      <form class="form-group" action="appsearch.php" method="post">
-        <div class="row">
-        <div class="col-md-10"><input type="text" name="app_contact" placeholder="Enter Contact" class = "form-control"></div>
-        <div class="col-md-2"><input type="submit" name="app_search_submit" class="btn btn-primary" value="Search"></div></div>
-      </form>
     </div>
         
               <table class="table table-hover">
-                <thead>
+                <thead>`
                   <tr>
                   <th scope="col">Appointment ID</th>
                   <th scope="col">Patient ID</th>
@@ -506,10 +488,6 @@ if(isset($_POST['docsub1']))
                   <div class="col-md-8"><input type="password" class="form-control"  onkeyup='check();' name="dpassword" id="dpassword"  required></div><br><br>
                   <div class="col-md-4"><label>Confirm Password:</label></div>
                   <div class="col-md-8"  id='cpass'><input type="password" class="form-control" onkeyup='check();' name="cdpassword" id="cdpassword" required>&nbsp &nbsp<span id='message'></span> </div><br><br>
-                   
-                  
-                  <div class="col-md-4"><label>Vactionation Fees:</label></div>
-                  <div class="col-md-8"><input type="text" class="form-control"  name="docFees" required></div><br><br>
                 </div>
           <input type="submit" name="docsub" value="Add Hospital" class="btn btn-primary">
         </form>
